@@ -13,6 +13,10 @@ class Job extends Model {
 
     protected $fillable = ['title', 'location'];
 
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class);
+    }
 
 
     // Locally stored jobs for testing without a database
