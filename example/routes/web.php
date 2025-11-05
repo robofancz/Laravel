@@ -6,18 +6,17 @@ use App\Models\Job;
 
 
 Route::get('/', function () {
-    return view('index', [
-        'greeting' => 'Welcome to our website!', // $greeting variable passed to the view
-        'name' => 'Herd', // Additional variable for demonstration
-    ]);
+    $jobs = Job::all();
+    dd($jobs[0]);
+    
 });
 
 Route::get('/jobs', function () {
-    return view('jobs', ['jobs' => Job::all()]);
+    return view('jobs', [
+        'jobs' => Job::all()]);
 });
 
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find($id);
+Route::get('/jobs/{job}', function (Job $job) {
     return view('job', ['job' => $job]);
 });
 

@@ -2,40 +2,54 @@
 
 namespace App\Models;
 use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Job{
-    public static function all(): array
-    {
-        return [
-            [
-                'id'=>1,
-                'title' => 'Software Engineer', 
-                'location' => 'New York'
-            ],
-            [
-                'id'=>2 ,
-                'title' => 'Product Manager',
-                 'location' => 'San Francisco'
-                ],
-            [
-                'id'=>3 ,
-                'title' => 'Designer',
-                 'location' => 'Remote'
-                ],
-        ];
-    }
+class Job extends Model {
+    use HasFactory;
 
-    public static function find(int $id): array
-    {
-        $job = Arr::first(static::all(), fn($job) => $job['id'] == $id);
 
-        if (! $job) {
-            abort(404);
-        }
-        else {
-            return $job;
-        }
-    }
+    protected $table = 'job_listings';
+
+    protected $fillable = ['title', 'location'];
+
+
+
+    // Locally stored jobs for testing without a database
+
+
+    // public static function all(): array
+    // {
+    //     return [
+    //         [
+    //             'id'=>1,
+    //             'title' => 'Software Engineer', 
+    //             'location' => 'New York'
+    //         ],
+    //         [
+    //             'id'=>2 ,
+    //             'title' => 'Product Manager',
+    //              'location' => 'San Francisco'
+    //             ],
+    //         [
+    //             'id'=>3 ,
+    //             'title' => 'Designer',
+    //              'location' => 'Remote'
+    //             ],
+    //     ];
+    // }
+
+    // public static function find(int $id): array
+    // {
+    //     $job = Arr::first(static::all(), fn($job) => $job['id'] == $id);
+
+    //     if (! $job) {
+    //         abort(404);
+    //     }
+    //     else {
+    //         return $job;
+    //     }
+    // }
 }
 
 
