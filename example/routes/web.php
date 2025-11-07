@@ -6,14 +6,15 @@ use App\Models\Job;
 
 
 Route::get('/', function () {
-    $jobs = Job::all();
-    dd($jobs[0]);
-    
+return view ('index');
 });
 
 Route::get('/jobs', function () {
+    $jobs = Job::with('employer')->get();
+
     return view('jobs', [
-        'jobs' => Job::all()]);
+        'jobs' => $jobs
+    ]);
 });
 
 Route::get('/jobs/{job}', function (Job $job) {
