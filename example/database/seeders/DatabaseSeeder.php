@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Job;
+use App\Models\Tag;
 use App\Models\Employer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,8 +26,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Job::factory(200)->create();
+        Job::factory(10)->has(Tag::factory())->create();
+        Job::factory(10)->has(Tag::factory())->create();
 
         Employer::factory(50)->create();
+
+        // Tag::factory(20)->has(Job::factory())->create();
     }
 }
