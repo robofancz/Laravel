@@ -33,9 +33,15 @@ Route::get('/jobs/{job}', function ($id) {
 
 Route::post('/jobs', function(){
     // dd(request()->all());
+
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'location' => ['required'],
+    ]);
+
     Job::create([
-        'title' => request()->title,
-        'location' => request()->location,
+        'title' => request('title'),
+        'location' => request('location'),
         'employer_id' => 1,
     ]);
     return redirect('/jobs');

@@ -17,8 +17,11 @@
             <div class="mt-2">
               <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6"></div>
-                <input id="title" type="text" name="title" placeholder="Shift Leader" class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" />
+                <input id="title" type="text" name="title" placeholder="Shift Leader" class="block min-w-0 grow bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" required/>
               </div>
+              @error('title')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+              @enderror
             </div>
           </div>
 
@@ -27,13 +30,23 @@
               <div class="mt-2">
                 <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                   <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6"></div>
-                  <input id="location" type="text" name="location" placeholder="New York" class="block flex-1 border-0 bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" />
+                  <input id="location" type="text" name="location" placeholder="New York" class="block flex-1 border-0 bg-white py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" required/>
                 </div>
+                @error('location')
+                  <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+                {{-- all validation error availible in laravel docs --}}
             </div>
-          
-
-        
         </div>
+        {{-- <div class="mt-4 text-red-600">
+          @if ($errors->any())
+            <ul>
+              @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          @endif
+        </div> --}}
       </div>
     </div>
     <div class="mt-6 flex items-center justify-end gap-x-6">
