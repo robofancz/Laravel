@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Employer;
+use App\Models\User;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Gate;
+
 
 class JobController extends Controller
 {
@@ -21,7 +27,7 @@ class JobController extends Controller
         return view('jobs.create');
     }
 
-    public function show($job){
+    public function show(Job $job){
         return view('jobs.show', ['job' => $job]);
     }
 
@@ -42,7 +48,7 @@ class JobController extends Controller
 
     public function edit(Job $job)
     {
-        return view('jobs.edit', ['job' => $job]);  
+        return view('jobs.edit', ['job' => $job]);
     }
 
     public function update(Job $job)
@@ -63,7 +69,7 @@ $job->update([
     return redirect('/jobs/' . $job->id);
 }
 
-    public function destroy()
+    public function destroy(Job $job)
     {
         // authorize (on hold)
         $job->delete();
