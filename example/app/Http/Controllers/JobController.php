@@ -9,6 +9,8 @@ use App\Models\Employer;
 use App\Models\User;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\JobPosted;
 
 
 class JobController extends Controller
@@ -38,11 +40,14 @@ class JobController extends Controller
             'location' => ['required'],
         ]);
 
-        Job::create([
+        $job = Job::create([
             'title' => request('title'),
             'location' => request('location'),
             'employer_id' => 1,
         ]);
+
+        Mail::to($job->employer->user)->send(new JobPosted($job));
+
         return redirect('/jobs');
     }
 

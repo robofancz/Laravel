@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Database\Eloquent\Model;
+use App\Mail\JobPosted;
+
+
+Route::get('test', function(){
+
+});
 
 
 
