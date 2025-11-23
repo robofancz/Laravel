@@ -9,10 +9,15 @@ use App\Models\User;
 use App\Models\Job;
 use Illuminate\Database\Eloquent\Model;
 use App\Mail\JobPosted;
+use App\Jobs\TranslateJob;
 
 
 Route::get('test', function(){
 
+    $job = Job::first();
+    TranslateJob::dispatch($job);
+
+    return 'Done';
 });
 
 
