@@ -1,18 +1,17 @@
-<div class="flex flex-col p-4 bg-white/5 rounded-xl text-center h-full">
-    <div class="text-start text-sm">Employer</div>
+<x-panel class="flex flex-col text-center">
 
-    <div class="py-8 font-bold">
-        <h3 class="mb-6 truncate">Title</h3>
-        <p>Salary</p>
+    <div class="py-8 ">
+        <h3 class="group-hover:text-blue-800 transition-colors duration-300 text-xl font-bold">Title</h3>
+        <p class="text-sm mt-4">Salary</p>
     </div>
 
     <div class="flex justify-between items-center mt-auto">
-        <div class="flex gap-2">
-            <x-tag>Tag</x-tag>
-            <x-tag>Tag</x-tag>
-            <x-tag>Tag</x-tag>
+        <div>
+            <x-tag size="small">Backend</x-tag>
+            <x-tag size="small">Frontend</x-tag>
+            <x-tag size="small">Manager</x-tag>
             
         </div>
-        <img src="https://placehold.co/42x42" alt="" class="rounded">
+        <x-employer-logo :width="42"/>
     </div>
-</div>
+</x-panel>
